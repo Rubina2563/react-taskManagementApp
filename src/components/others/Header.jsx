@@ -1,21 +1,44 @@
-import React from 'react';
+import React from "react";
 
 const Header = (props) => {
-  const loggedOutUser = () => {
-  props.changedUser('')
-   //window.location.reload()
-  }
+  const handleLogout = () => {
+    props.changedUser(); // Log out functionality
+  };
+
+  const handleAddUser = () => {
+    // Functionality for adding a new user
+    console.log("Redirecting to add new user page...");
+  };
+console.log(props)
+  const isAdmin = props.data?.id === "admin001"; // Check if the role is admin
+
   return (
-    <div className="bg-slate-400 border-none rounded-xl flex justify-between p-4 items-end">
-      <h1>
-        Hello<br />
-        <span className="text-lg font-bold text-red-900">
-          {props.data?.firstname || "Admin"}
-        </span>
-      </h1>
-      <button className="bg-orange-600 border-none rounded-md p-2 text-slate-300 font-bold" onClick={loggedOutUser}>
-        Log Out
-      </button>
+    <div className="bg-gray-800 text-gray-100 shadow-lg rounded-xl flex justify-between p-4 items-center">
+      <div>
+        <h1 className="text-2xl font-semibold">
+          Welcome,
+          <br />
+          <span className="text-lg font-bold text-teal-400">
+            {props.data?.firstname || "Admin"}
+          </span>
+        </h1>
+      </div>
+      <div className="flex items-center gap-4">
+        {isAdmin && (
+          <button
+            className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-md transition"
+            onClick={handleAddUser}
+          >
+            Add New User
+          </button>
+        )}
+        <button
+          className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-md transition"
+          onClick={handleLogout}
+        >
+          Log Out
+        </button>
+      </div>
     </div>
   );
 };

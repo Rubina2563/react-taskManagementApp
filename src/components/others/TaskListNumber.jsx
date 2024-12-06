@@ -1,23 +1,27 @@
 import React from 'react';
 
 const TaskListNumber = ({ data }) => {
-  // Add default values if data or taskNumber is undefined
   const taskNumber = data?.taskNumber || { active: 0, completed: 0, failed: 0, newTask: 0 };
 
+  const stats = [
+    { label: 'New Tasks', value: taskNumber.newTask, color: 'bg-blue-400' },
+    { label: 'Active Tasks', value: taskNumber.active, color: 'bg-yellow-400' },
+    { label: 'Completed Tasks', value: taskNumber.completed, color: 'bg-green-400' },
+    { label: 'Failed Tasks', value: taskNumber.failed, color: 'bg-red-400' },
+  ];
+  console.log("tasklist number:",data)
+
   return (
-    <div className="bg-amber-400 flex gap-3 w-full h-[30%] p-2">
-      <div className="bg-orange-500 h-full w-1/3 p-2">
-        <div>New Task Number: {taskNumber.newTask}</div>
-      </div>
-      <div className="bg-orange-500 h-full w-1/3 p-2">
-        <div>Active Task: {taskNumber.active}</div>
-      </div>
-      <div className="bg-orange-500 h-full w-1/3 p-2">
-        <div>Completed Task: {taskNumber.completed}</div>
-      </div>
-      <div className="bg-orange-500 h-full w-1/3 p-2">
-        <div>Failed Task: {taskNumber.failed}</div>
-      </div>
+    <div className="flex w-full flex-wrap gap-3 justify-center">
+      {stats.map((stat, idx) => (
+        <div
+          key={idx}
+          className={`flex flex-col items-center justify-center w-32 h-20 rounded-md shadow-sm ${stat.color} text-white`}
+        >
+          <div className="text-lg font-semibold">{stat.value}</div>
+          <div className="text-xs">{stat.label}</div>
+        </div>
+      ))}
     </div>
   );
 };

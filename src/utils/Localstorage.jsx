@@ -4,7 +4,8 @@ const admin = [
   {
     "id": "admin001",
     "email": "rubinatazak@gmail.com",
-    "password": "123"
+    "password": "123",
+    
   }
 ]; 
 const employees = [
@@ -46,7 +47,7 @@ const employees = [
   {
     "id": "emp002",
     "firstname": "Jane",
-    "email": "jane.smith@company.com",
+    "email": "janesmith@company.com",
     "password": "jane123",
     "tasks": [
       {

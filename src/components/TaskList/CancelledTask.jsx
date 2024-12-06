@@ -1,21 +1,34 @@
-import React from 'react'
+import React from 'react';
 
-const CancelledTask = ({data}) => {
+const CancelledTask = ({ data }) => {
   return (
-     <div className="flex-shrink-0 bg-red-400 p-3 border-none rounded-lg w-[200px] h-auto">
-        <div className="flex items-center justify-between mb-2">
-          <h5 className="border-none rounded-lg bg-red-300 px-2">{data.category}</h5>
-          <span>{data.date }</span>
-        </div>
-        <h1 className="text-lg font-bold mb-2">{data.title }</h1>
-        <p className="text-sm leading-relaxed">
-         {data.description}
-          </p>
-             <div className='flex justify-center mt-3'>
-              <button className='bg-red-700 border-none rounded-lg p-3'>Failed</button>
-          </div>
+    <div className="bg-red-400 p-4 rounded-lg shadow-md w-full sm:w-[250px] h-auto flex flex-col justify-between max-w-[95%] mx-auto">
+      {/* Task Header */}
+      <div className="flex flex-wrap items-center justify-between mb-3 gap-2">
+        <h5 className="text-white bg-red-300 px-2 py-1 rounded-lg text-sm font-medium truncate max-w-[60%]">
+          {data.category}
+        </h5>
+        <span className="text-xs text-gray-700 whitespace-nowrap">{data.date}</span>
       </div>
-  )
-}
 
-export default CancelledTask
+      {/* Task Title */}
+      <h1 className="text-lg font-semibold mb-2 text-gray-800 break-words text-center">
+        {data.title}
+      </h1>
+
+      {/* Task Description */}
+      <p className="text-sm text-gray-700 leading-relaxed mb-4 break-words">
+        {data.description}
+      </p>
+
+      {/* Action Buttons */}
+      <div className="flex flex-wrap justify-center mt-auto space-x-2 gap-y-2">
+        <button className="bg-red-700 hover:bg-red-800 text-white text-sm px-3 py-2 rounded-lg transition duration-200">
+          Failed
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default CancelledTask;
