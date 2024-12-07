@@ -95,16 +95,7 @@ const employees = [
         "failed": false,
         "newTask": false
       },
-      {
-        "title": "Backend API Integration",
-        "description": "Connect frontend with the backend API.",
-        "date": "2024-10-25",
-        "category": "Development",
-        "active": false,
-        "completed": false,
-        "failed": false,
-        "newTask": true
-      },
+     
       {
         "title": "Database Optimization",
         "description": "Improve query performance.",

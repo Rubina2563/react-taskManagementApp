@@ -12,83 +12,75 @@ const App = () => {
     const loggedInUser = localStorage.getItem("loggedInUser");
     if (loggedInUser) {
       const parsedData = JSON.parse(loggedInUser);
-      setUser(parsedData.role);
-      setLoggedInUserData(parsedData.data);
-      console.log("LocalStorage data loaded:", parsedData);
+      if (parsedData.role !== user || JSON.stringify(parsedData.data) !== JSON.stringify(loggedInUserData)) {
+        setUser(parsedData.role);
+        setLoggedInUserData(parsedData.data);
+      }
     } else {
       setUser("");
       setLoggedInUserData("");
-      console.log("No data in localStorage for logged-in user.");
     }
   };
 
   useEffect(() => {
     // Initial load of localStorage data
-    console.log("Initial load of localStorage data.");
     loadLocalStorageData();
 
-    // Add an event listener for localStorage changes
+    // Listen for storage events to detect changes from other windows
     const handleStorageChange = () => {
-      console.log("Storage event detected. Reloading localStorage data.");
       loadLocalStorageData();
     };
 
     window.addEventListener("storage", handleStorageChange);
 
-    // Cleanup the event listener on unmount
+    // Set interval to check localStorage every 500ms
+    const intervalId = setInterval(() => {
+      loadLocalStorageData(); // Update data from localStorage every 500ms
+    }, 500);
+
+    // Cleanup the event listener and interval on unmount
     return () => {
       window.removeEventListener("storage", handleStorageChange);
+      clearInterval(intervalId); // Clear the interval to avoid memory leak
     };
-  }, []);
+  }, [user, loggedInUserData]); // Run this when user or loggedInUserData changes
 
   const handleLogin = (email, password) => {
     const employees = JSON.parse(localStorage.getItem("employees")) || [];
     const admin = JSON.parse(localStorage.getItem("admin"))?.[0] || null;
 
-    console.log("Handling login for email:", email);
-
     if (admin && email === admin.email && password === admin.password) {
-      // Admin login
-      console.log("Admin login successful.");
       const adminData = { role: "admin", data: admin };
       localStorage.setItem("loggedInUser", JSON.stringify(adminData));
       loadLocalStorageData();
     } else {
-      // Employee login
       const employee = employees.find(
         (e) => e.email === email && e.password === password
       );
       if (employee) {
-        console.log("Employee login successful:", employee);
         const employeeData = { role: "employee", data: employee };
         localStorage.setItem("loggedInUser", JSON.stringify(employeeData));
         loadLocalStorageData();
-      } else {
-        console.log("Invalid login credentials.");
       }
     }
   };
 
   const handleLogout = () => {
-    console.log("User logged out.");
     localStorage.removeItem("loggedInUser");
     loadLocalStorageData();
   };
 
   return (
     <>
-   {/*    <div>
-        Debug Info 
-        <h3>Debug Info:</h3>
-        <p>User Role: {user}</p>
-        <p>Logged-in User Data: {JSON.stringify(loggedInUserData, null, 2)}</p>
-      </div>*/}
       {!user ? (
         <Login handleLogin={handleLogin} />
       ) : user === "admin" ? (
         <AdminDashboard changedUser={handleLogout} data={loggedInUserData} />
       ) : (
-        <EmployDashboard changedUser={handleLogout} data={loggedInUserData} />
+        <EmployDashboard
+          changedUser={handleLogout}
+          data={loggedInUserData}
+        />
       )}
     </>
   );

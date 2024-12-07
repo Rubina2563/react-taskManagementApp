@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const CancelledTask = ({ data }) => {
   return (
     <div className="bg-red-400 p-4 rounded-lg shadow-md w-full sm:w-[250px] h-auto flex flex-col justify-between max-w-[95%] mx-auto">
@@ -22,10 +23,13 @@ const CancelledTask = ({ data }) => {
       </p>
 
       {/* Action Buttons */}
-      <div className="flex flex-wrap justify-center mt-auto space-x-2 gap-y-2">
-        <button className="bg-red-700 hover:bg-red-800 text-white text-sm px-3 py-2 rounded-lg transition duration-200">
-          Failed
-        </button>
+     <div className="flex flex-wrap justify-center mt-auto space-x-2 gap-y-2">
+        <p className="bg-red-700 text-white text-sm px-3 py-2 rounded-lg">
+          Status: Task Failed
+        </p>
+        <p className="text-xs text-gray-200">
+          The task has failed. It could not be completed as expected, and further action is needed.
+        </p>
       </div>
     </div>
   );
