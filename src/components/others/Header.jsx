@@ -1,13 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Header = (props) => {
+    const navigate = useNavigate(); // Initialize navigate
   const handleLogout = () => {
     props.changedUser(); // Log out functionality
-  };
+   navigate("/");};
+
+ 
 
   const handleAddUser = () => {
-    // Functionality for adding a new user
-    console.log("Redirecting to add new user page...");
+    navigate("/add-user"); // Redirect to the "Add New User" page
   };
 console.log(props)
   const isAdmin = props.data?.id === "admin001"; // Check if the role is admin

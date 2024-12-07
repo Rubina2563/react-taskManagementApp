@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Login from "./components/Auth/Login";
 import EmployDashboard from "./components/Dashboard/EmployDashboard";
 import AdminDashboard from "./components/Dashboard/AdminDashboard";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import AddUser from "./components/others/AddUser";
 
 const App = () => {
   const [user, setUser] = useState("");
@@ -72,16 +74,46 @@ const App = () => {
 
   return (
     <>
-      {!user ? (
-        <Login handleLogin={handleLogin} />
-      ) : user === "admin" ? (
-        <AdminDashboard changedUser={handleLogout} data={loggedInUserData} />
-      ) : (
-        <EmployDashboard
-          changedUser={handleLogout}
-          data={loggedInUserData}
-        />
-      )}
+      <Router>
+        <Routes>
+          {/* Public Routes */}
+          {!user && (
+            <>
+              <Route path="/" element={<Login handleLogin={handleLogin} />} />
+            </>
+          )}
+
+          {/* Admin Routes */}
+          {user === "admin" && (
+            <>
+              <Route
+                path="/admin"
+                element={
+                  <AdminDashboard changedUser={handleLogout} data={loggedInUserData} />
+                }
+              />
+              <Route
+                path="/add-user"
+                element={<AddUser />}
+              />
+              <Route path="*" element={<Navigate to="/admin" />} />
+            </>
+          )}
+
+          {/* Employee Routes */}
+          {user === "employee" && (
+            <>
+              <Route
+                path="/user"
+                element={
+                  <EmployDashboard changedUser={handleLogout} data={loggedInUserData} />
+                }
+              />
+              <Route path="*" element={<Navigate to="/user" />} />
+            </>
+          )}
+        </Routes>
+      </Router>
     </>
   );
 };
