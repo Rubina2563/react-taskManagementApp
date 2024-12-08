@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import Login from "./components/Auth/Login";
 import EmployDashboard from "./components/Dashboard/EmployDashboard";
 import AdminDashboard from "./components/Dashboard/AdminDashboard";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import AddUser from "./components/others/AddUser";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
 const App = () => {
   const [user, setUser] = useState("");
@@ -24,28 +24,30 @@ const App = () => {
     }
   };
 
+  // Function to update employees
+  const updateEmployees = () => {
+    const updatedData = JSON.parse(localStorage.getItem("employees")) || [];
+    console.log("Employees updated:", updatedData);
+  };
+
   useEffect(() => {
-    // Initial load of localStorage data
     loadLocalStorageData();
 
-    // Listen for storage events to detect changes from other windows
     const handleStorageChange = () => {
       loadLocalStorageData();
     };
 
     window.addEventListener("storage", handleStorageChange);
 
-    // Set interval to check localStorage every 500ms
     const intervalId = setInterval(() => {
-      loadLocalStorageData(); // Update data from localStorage every 500ms
+      loadLocalStorageData();
     }, 500);
 
-    // Cleanup the event listener and interval on unmount
     return () => {
       window.removeEventListener("storage", handleStorageChange);
-      clearInterval(intervalId); // Clear the interval to avoid memory leak
+      clearInterval(intervalId);
     };
-  }, [user, loggedInUserData]); // Run this when user or loggedInUserData changes
+  }, [user, loggedInUserData]);
 
   const handleLogin = (email, password) => {
     const employees = JSON.parse(localStorage.getItem("employees")) || [];
@@ -73,48 +75,49 @@ const App = () => {
   };
 
   return (
-    <>
-      <Router>
-        <Routes>
-          {/* Public Routes */}
-          {!user && (
-            <>
-              <Route path="/" element={<Login handleLogin={handleLogin} />} />
-            </>
-          )}
+    <Router>
+      <Routes>
+        {/* Public Routes */}
+        {!user && <Route path="/" element={<Login handleLogin={handleLogin} />} />}
 
-          {/* Admin Routes */}
-          {user === "admin" && (
-            <>
-              <Route
-                path="/admin"
-                element={
-                  <AdminDashboard changedUser={handleLogout} data={loggedInUserData} />
-                }
-              />
-              <Route
-                path="/add-user"
-                element={<AddUser />}
-              />
-              <Route path="*" element={<Navigate to="/admin" />} />
-            </>
-          )}
+        {/* Admin Routes */}
+        {user === "admin" && (
+          <>
+            <Route
+              path="/admin"
+              element={
+                <AdminDashboard
+                  changedUser={handleLogout}
+                  data={loggedInUserData}
+                  updateEmployees={updateEmployees}
+                />
+              }
+            />
+            <Route
+              path="/add-user"
+              element={<AddUser updateEmployees={updateEmployees} />}
+            />
+            <Route path="*" element={<Navigate to="/admin" />} />
+          </>
+        )}
 
-          {/* Employee Routes */}
-          {user === "employee" && (
-            <>
-              <Route
-                path="/user"
-                element={
-                  <EmployDashboard changedUser={handleLogout} data={loggedInUserData} />
-                }
-              />
-              <Route path="*" element={<Navigate to="/user" />} />
-            </>
-          )}
-        </Routes>
-      </Router>
-    </>
+        {/* Employee Routes */}
+        {user === "employee" && (
+          <>
+            <Route
+              path="/user"
+              element={
+                <EmployDashboard
+                  changedUser={handleLogout}
+                  data={loggedInUserData}
+                />
+              }
+            />
+            <Route path="*" element={<Navigate to="/user" />} />
+          </>
+        )}
+      </Routes>
+    </Router>
   );
 };
 

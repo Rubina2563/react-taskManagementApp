@@ -2,18 +2,18 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const Header = (props) => {
-    const navigate = useNavigate(); // Initialize navigate
-  const handleLogout = () => {
-    props.changedUser(); // Log out functionality
-   navigate("/");};
+  const navigate = useNavigate();
 
- 
+  const handleLogout = () => {
+    props.changedUser();
+    navigate("/");
+  };
 
   const handleAddUser = () => {
-    navigate("/add-user"); // Redirect to the "Add New User" page
+    navigate("/add-user"); // Redirect to Add User page
   };
-console.log(props)
-  const isAdmin = props.data?.id === "admin001"; // Check if the role is admin
+
+  const isAdmin = props.data?.id === "admin001";
 
   return (
     <div className="bg-gray-800 text-gray-100 shadow-lg rounded-xl flex justify-between p-4 items-center">

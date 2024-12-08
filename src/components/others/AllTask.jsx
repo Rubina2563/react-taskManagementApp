@@ -1,9 +1,6 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../../context/AuthProvider";
+import React from "react";
 
-const AllTask = () => {
-  const authData = useContext(AuthContext);
-
+const AllTask = ({ employees }) => {
   return (
     <div className="bg-gray-800 shadow-lg rounded-lg p-6">
       <h2 className="text-xl font-bold text-teal-400 mb-4">All Tasks</h2>
@@ -19,20 +16,38 @@ const AllTask = () => {
             </tr>
           </thead>
           <tbody>
-            {authData?.userData.employees?.map((employee, idx) => (
-              <tr
-                key={idx}
-                className={`${
-                  idx % 2 === 0 ? "bg-gray-700" : "bg-gray-800"
-                } border-b border-gray-700`}
-              >
-                <td className="px-4 py-2 text-gray-200">{employee.firstname}</td>
-                <td className="px-4 py-2 text-center text-gray-200">{employee.taskNumber.newTask}</td>
-                <td className="px-4 py-2 text-center text-gray-200">{employee.taskNumber.active}</td>
-                <td className="px-4 py-2 text-center text-gray-200">{employee.taskNumber.completed}</td>
-                <td className="px-4 py-2 text-center text-gray-200">{employee.taskNumber.failed}</td>
+            {employees.length > 0 ? (
+              employees.map((employee, idx) => (
+                <tr
+                  key={idx}
+                  className={`${
+                    idx % 2 === 0 ? "bg-gray-700" : "bg-gray-800"
+                  } border-b border-gray-700`}
+                >
+                  <td className="px-4 py-2 text-gray-200">
+                    {employee.firstname}
+                  </td>
+                  <td className="px-4 py-2 text-center text-gray-200">
+                    {employee.taskNumber?.newTask || 0}
+                  </td>
+                  <td className="px-4 py-2 text-center text-gray-200">
+                    {employee.taskNumber?.active || 0}
+                  </td>
+                  <td className="px-4 py-2 text-center text-gray-200">
+                    {employee.taskNumber?.completed || 0}
+                  </td>
+                  <td className="px-4 py-2 text-center text-gray-200">
+                    {employee.taskNumber?.failed || 0}
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="5" className="text-center text-gray-400 py-4">
+                  No tasks found
+                </td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>
