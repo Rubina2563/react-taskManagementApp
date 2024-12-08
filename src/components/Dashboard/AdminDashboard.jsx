@@ -21,8 +21,9 @@ const AdminDashboard = (props) => {
         data={props.data}
         updateEmployees={updateEmployees}
       />
-      <AddUser updateEmployees={updateEmployees} />
-      <div className="max-w-7xl mx-auto px-4 py-8 space-y-10">
+     
+      <div className=" mx-auto px-8 space-y-5">
+         <AddUser updateEmployees={updateEmployees} />
         <CreateTask onTaskCreated={updateEmployees} />
         <AllTask employees={employees} />
       </div>

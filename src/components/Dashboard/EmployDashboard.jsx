@@ -50,12 +50,21 @@ const EmployDashboard = (props) => {
         <div className="w-full max-w-5xl bg-white shadow-md rounded-xl p-4 flex flex-wrap gap-4 justify-evenly">
           <TaskListNumber data={props.data} />
         </div>
-        <div className="w-full max-w-5xl bg-white shadow-md rounded-xl p-4">
-          <h2 className="text-xl font-semibold text-gray-800 mb-4">
-            Task Overview
-          </h2>
-          <TaskList data={props.data} reloadData={props.reloadData} />
-        </div>
+ <div className="w-full max-w-5xl bg-white shadow-md rounded-xl p-4 flex flex-col items-center">
+  <h2
+    className="text-3xl font-semibold mb-4 tracking-wide"
+    style={{
+      fontFamily: "'Lora', serif", // Use a stylish serif font
+      color: "#FF6347", // Soft blue color for the text
+    }}
+  >
+    Task Overview
+  </h2>
+  <TaskList data={props.data} reloadData={props.reloadData} />
+</div>
+
+
+
       </div>
     </div>
   );

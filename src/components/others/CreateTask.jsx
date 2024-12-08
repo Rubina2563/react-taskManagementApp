@@ -60,86 +60,86 @@ const CreateTask = ({ onTaskCreated }) => {
   };
 
   return (
-    <div className="bg-gray-800 shadow-lg rounded-lg p-6">
-      {/* Toggle Tab */}
-      <div
-        onClick={() => setIsExpanded(!isExpanded)}
-        className="flex justify-between items-center cursor-pointer bg-teal-600 text-gray-100 px-4 py-2 rounded-t-md"
-      >
-        <h2 className="text-lg font-bold">Create a New Task</h2>
-        <span className={`transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}>
-          ▼
-        </span>
-      </div>
-
-      {/* Form Content */}
-      <div
-        className={`overflow-hidden transition-all duration-500 ${
-          isExpanded ? "max-h-[1000px]" : "max-h-0"
-        }`}
-      >
-        <form
-          onSubmit={submitHandler}
-          className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-6 mt-4"
+    <div className="max-w-4xl mx-auto shadow-[0px_0px_8px_silver] ">
+      {/* Create Task Section */}
+      <div>
+        <div
+          className="bg-gray-800 shadow-lg rounded-lg p-4 flex justify-between items-center cursor-pointer"
+          onClick={() => setIsExpanded(!isExpanded)}
         >
-          <div>
-            <label className="block mb-2 text-sm text-gray-300">Task Title</label>
-            <input
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              type="text"
-              className="w-full bg-gray-700 text-gray-200 border border-gray-600 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
-              placeholder="Enter task title"
-            />
+          <h2 className="text-xl font-bold text-teal-400">Create a New Task</h2>
+          <span className="text-teal-400">
+            {isExpanded ? "▲" : "▼"}
+          </span>
+        </div>
+        {isExpanded && (
+          <div className="bg-gray-800 shadow-lg rounded-lg p-6 mt-4">
+            <form onSubmit={submitHandler} className="space-y-6">
+              <div>
+                <label className="block mb-2 text-sm text-gray-300">Task Title</label>
+                <input
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  type="text"
+                  className="w-full bg-gray-700 text-gray-200 border border-gray-600 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
+                  placeholder="Enter task title"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block mb-2 text-sm text-gray-300">Date</label>
+                <input
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                  type="date"
+                  className="w-full bg-gray-700 text-gray-200 border border-gray-600 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block mb-2 text-sm text-gray-300">Assign To</label>
+                <input
+                  value={assignTo}
+                  onChange={(e) => setAssignTo(e.target.value)}
+                  type="text"
+                  className="w-full bg-gray-700 text-gray-200 border border-gray-600 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
+                  placeholder="Enter employee name"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block mb-2 text-sm text-gray-300">Category</label>
+                <input
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                  type="text"
+                  className="w-full bg-gray-700 text-gray-200 border border-gray-600 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
+                  placeholder="Enter category"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block mb-2 text-sm text-gray-300">Description</label>
+                <textarea
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  className="w-full bg-gray-700 text-gray-200 border border-gray-600 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
+                  rows="4"
+                  placeholder="Enter task description"
+                  required
+                ></textarea>
+              </div>
+              <div>
+                <button
+                  type="submit"
+                  className="bg-teal-600 text-gray-100 px-6 py-3 rounded-md hover:bg-teal-700 transition"
+                >
+                  Create Task
+                </button>
+              </div>
+            </form>
           </div>
-          <div>
-            <label className="block mb-2 text-sm text-gray-300">Date</label>
-            <input
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-              type="date"
-              className="w-full bg-gray-700 text-gray-200 border border-gray-600 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
-            />
-          </div>
-          <div>
-            <label className="block mb-2 text-sm text-gray-300">Assign To</label>
-            <input
-              value={assignTo}
-              onChange={(e) => setAssignTo(e.target.value)}
-              type="text"
-              className="w-full bg-gray-700 text-gray-200 border border-gray-600 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
-              placeholder="Enter employee name"
-            />
-          </div>
-          <div>
-            <label className="block mb-2 text-sm text-gray-300">Category</label>
-            <input
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-              type="text"
-              className="w-full bg-gray-700 text-gray-200 border border-gray-600 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
-              placeholder="Enter category"
-            />
-          </div>
-          <div className="col-span-1 sm:col-span-1 md:col-span-2">
-            <label className="block mb-2 text-sm text-gray-300">Description</label>
-            <textarea
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              className="w-full bg-gray-700 text-gray-200 border border-gray-600 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
-              rows="4"
-              placeholder="Enter task description"
-            ></textarea>
-          </div>
-          <div className="col-span-1 sm:col-span-1 md:col-span-2 text-center">
-            <button
-              type="submit"
-              className="bg-teal-600 text-gray-100 px-6 py-3 rounded-md hover:bg-teal-700 transition"
-            >
-              Create Task
-            </button>
-          </div>
-        </form>
+        )}
       </div>
     </div>
   );

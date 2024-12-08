@@ -34,13 +34,16 @@ const TaskList = ({ data }) => {
   }, []);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+    <div className="bg-pink-100 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
       {tasks.map((task, id) => {
-        const commonStyles = `p-4 shadow-md rounded-lg bg-white border hover:shadow-lg transition-shadow duration-300 ease-in-out`;
+        const commonStyles = `p-4 shadow-md rounded-lg bg-white border transition-all duration-300 ease-in-out`;
+
+        // Add specific styles for the box shadow
+        const shadowStyles = `hover:shadow-xl hover:scale-105`;
 
         if (task.active) {
           return (
-            <div key={id} className={`${commonStyles} border-blue-500`}>
+            <div key={id} className={`${commonStyles} border-blue-500 ${shadowStyles}`}>
               <AcceptdTask data={task} employeeData={data} />
             </div>
           );
@@ -48,7 +51,7 @@ const TaskList = ({ data }) => {
 
         if (task.completed) {
           return (
-            <div key={id} className={`${commonStyles} border-blue-500`}>
+            <div key={id} className={`${commonStyles} border-blue-500 ${shadowStyles}`}>
               <FinishedTask data={task} />
             </div>
           );
@@ -56,7 +59,7 @@ const TaskList = ({ data }) => {
 
         if (task.failed) {
           return (
-            <div key={id} className={`${commonStyles} border-blue-500`}>
+            <div key={id} className={`${commonStyles} border-blue-500 ${shadowStyles}`}>
               <CancelledTask data={task} />
             </div>
           );
@@ -64,7 +67,7 @@ const TaskList = ({ data }) => {
 
         if (task.newTask) {
           return (
-            <div key={id} className={`${commonStyles} border-blue-500`}>
+            <div key={id} className={`${commonStyles} border-blue-500 ${shadowStyles}`}>
               <NewTask data={task} employeeData={data} />
             </div>
           );

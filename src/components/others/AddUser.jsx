@@ -70,9 +70,9 @@ const AddUser = ({ updateEmployees }) => {
   return (
    
       
-      <div className="max-w-4xl mx-auto px-4 py-8 space-y-6">
+      <div className="max-w-4xl mx-auto  py-8 space-y-6">
         {/* Add User Section */}
-        <div>
+        <div className="shadow-[0px_0px_8px_silver] ">
           <div
             className="bg-gray-800 shadow-lg rounded-lg p-4 flex justify-between items-center cursor-pointer"
             onClick={() => setIsAddUserOpen(!isAddUserOpen)}
@@ -136,7 +136,7 @@ const AddUser = ({ updateEmployees }) => {
         </div>
 
         {/* Delete User Section */}
-        <div>
+        <div className="shadow-[0px_0px_8px_silver] ">
           <div
             className="bg-gray-800 shadow-lg rounded-lg p-4 flex justify-between items-center cursor-pointer"
             onClick={() => setIsDeleteUserOpen(!isDeleteUserOpen)}

@@ -27,20 +27,22 @@ const Header = (props) => {
         </h1>
       </div>
       <div className="flex items-center gap-4">
-        {isAdmin && (
+        {/* {isAdmin && (
           <button
             className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-md transition"
             onClick={handleAddUser}
           >
             Add New User
           </button>
-        )}
-        <button
-          className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-md transition"
-          onClick={handleLogout}
-        >
-          Log Out
-        </button>
+        )} */}
+<button
+  className="bg-gradient-to-r from-red-500 to-red-700 text-white font-semibold py-2 px-6 rounded-md shadow-[0px_0px_8px_silver] hover:shadow-[0px_0px_12px_silver] transition-transform transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+  onClick={handleLogout}
+>
+  Log Out
+</button>
+
+
       </div>
     </div>
   );
