@@ -1,13 +1,11 @@
-# Images with Reduced Size
+# Images for mobile view of app
 
-### Image 1
-<img src="https://github.com/user-attachments/assets/1346e9b0-5e6e-4411-833e-a8c8f3c0eea2" alt="Image 1" width="400"/>
+<div style="display: flex; justify-content: space-around;">
+  <img src="https://github.com/user-attachments/assets/1346e9b0-5e6e-4411-833e-a8c8f3c0eea2" alt="Image 1" width="300"/>
+  <img src="https://github.com/user-attachments/assets/e8ae9801-0645-45cd-9a11-386d89b827dc" alt="Image 2" width="300"/>
+  <img src="https://github.com/user-attachments/assets/5db8f5ee-a2bb-4be1-aebc-0e1b09e0d219" alt="Image 3" width="300"/>
+</div>
 
-### Image 2
-<img src="https://github.com/user-attachments/assets/e8ae9801-0645-45cd-9a11-386d89b827dc" alt="Image 2" width="400"/>
-
-### Image 3
-<img src="https://github.com/user-attachments/assets/5db8f5ee-a2bb-4be1-aebc-0e1b09e0d219" alt="Image 3" width="400"/>
 
 # Employee/Task Management App  
 
