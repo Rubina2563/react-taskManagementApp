@@ -29,30 +29,31 @@ const TaskListNumber = ({ data }) => {
       </div>
 
       {/* Enhanced Admin Review Notification */}
-      <div className="mt-4 px-6 py-3 text-sm font-semibold text-white bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-md shadow-lg animate-slide">
-        Task numbers will update after review from the admin.
-      </div>
+<div className="mt-4 px-4 py-3 text-center text-sm font-semibold text-white bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-md shadow-lg animate-slide max-w-full sm:px-6 sm:text-base">
+  Task numbers will update after review from the admin.
+</div>
 
-      {/* Keyframes for left-right motion */}
-      <style>
-        {`
-          @keyframes slide {
-            0% {
-              transform: translateX(-5px);
-            }
-            50% {
-              transform: translateX(5px);
-            }
-            100% {
-              transform: translateX(-5px);
-            }
-          }
+{/* Keyframes for left-right motion */}
+<style>
+  {`
+    @keyframes slide {
+      0% {
+        transform: translateX(-5px);
+      }
+      50% {
+        transform: translateX(5px);
+      }
+      100% {
+        transform: translateX(-5px);
+      }
+    }
 
-          .animate-slide {
-            animation: slide 3s infinite ease-in-out;
-          }
-        `}
-      </style>
+    .animate-slide {
+      animation: slide 3s infinite ease-in-out;
+    }
+  `}
+</style>
+
     </div>
   );
 };

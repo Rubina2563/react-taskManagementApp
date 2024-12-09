@@ -36,7 +36,8 @@ const TaskList = ({ data }) => {
   return (
     <div className="bg-pink-100 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
       {tasks.map((task, id) => {
-        const commonStyles = `p-4 shadow-md rounded-lg bg-white border transition-all duration-300 ease-in-out`;
+       const commonStyles = `shadow-md rounded-lg bg-white border transition-all duration-300 ease-in-out sm:p-4 `;
+
 
         // Add specific styles for the box shadow
         const shadowStyles = `hover:shadow-xl hover:scale-105`;
