@@ -1,6 +1,14 @@
-![WhatsApp Image 2024-12-09 at 10 59 37 AM (2)](https://github.com/user-attachments/assets/1346e9b0-5e6e-4411-833e-a8c8f3c0eea2)
-![WhatsApp Image 2024-12-09 at 10 59 37 AM (1)](https://github.com/user-attachments/assets/e8ae9801-0645-45cd-9a11-386d89b827dc)
-![WhatsApp Image 2024-12-09 at 10 59 37 AM](https://github.com/user-attachments/assets/5db8f5ee-a2bb-4be1-aebc-0e1b09e0d219)
+# Images with Reduced Size
+
+### Image 1
+<img src="https://github.com/user-attachments/assets/1346e9b0-5e6e-4411-833e-a8c8f3c0eea2" alt="Image 1" width="400"/>
+
+### Image 2
+<img src="https://github.com/user-attachments/assets/e8ae9801-0645-45cd-9a11-386d89b827dc" alt="Image 2" width="400"/>
+
+### Image 3
+<img src="https://github.com/user-attachments/assets/5db8f5ee-a2bb-4be1-aebc-0e1b09e0d219" alt="Image 3" width="400"/>
+
 # Employee/Task Management App  
 
 A simple and efficient task management application built using **React** and **Tailwind CSS**. This app is **local storage-based** and offers functionality for managing tasks under different statuses such as `New Tasks`, `Active Tasks`, `Completed Tasks`, and `Failed Tasks`. While it operates on local storage, it is designed to be easily migrated to a cloud server for greater flexibility and scalability.  
