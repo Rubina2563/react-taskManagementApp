@@ -1,9 +1,17 @@
-# Images for mobile view of app
+# App Screenshots (Mobile View)
 
 <div style="display: flex; justify-content: space-around;">
   <img src="https://github.com/user-attachments/assets/1346e9b0-5e6e-4411-833e-a8c8f3c0eea2" alt="Image 1" width="300"/>
   <img src="https://github.com/user-attachments/assets/e8ae9801-0645-45cd-9a11-386d89b827dc" alt="Image 2" width="300"/>
   <img src="https://github.com/user-attachments/assets/5db8f5ee-a2bb-4be1-aebc-0e1b09e0d219" alt="Image 3" width="300"/>
+</div>
+
+# App Screenshots (Desktop View)
+
+<div style="display: flex; justify-content: space-around;">
+  <img src="https://github.com/user-attachments/assets/4ce045db-efd3-44ba-b575-8e6ce33030b4" alt="Screenshot 1" width="300"/>
+  <img src="https://github.com/user-attachments/assets/ef6cd525-936d-4d30-ae99-c3144952ac30" alt="Screenshot 2" width="300"/>
+  <img src="https://github.com/user-attachments/assets/d96a55ca-16a7-43a5-89ee-2aba718eca0f" alt="Screenshot 3" width="300"/>
 </div>
 
 
